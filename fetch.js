@@ -48,3 +48,23 @@ function displayPhoto(data){
         photos.appendChild(photo);
     }
 }
+
+function todosLoad(){
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(response => response.json())
+    .then(json => displayTodos(json))
+}
+
+function displayTodos(data){
+    const todos = document.getElementById('todos');
+    for(const allTodo of data){
+        const todo = document.createElement('div');
+        todo.classList.add('tod');
+        todo.innerHTML = `
+        <h2>Id: ${allTodo.id}</h2>
+        <h2>UserId: ${allTodo.userId}</h2>
+        <h3>Title: ${allTodo.title}</h3>
+        `;
+        todos.appendChild(todo);
+    }
+}
